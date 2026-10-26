@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server';
+export async function POST(request: Request) { const body = await request.json(); if (body.email === 'demo@shopdesk.dev' && body.password === 'Password123!') return NextResponse.json({ token: `shopdesk_${Math.random().toString(36).slice(2)}`, expiry: Date.now() + 30 * 60 * 1000 }); return NextResponse.json({ message: 'Invalid email or password' }, { status: 401 }); }

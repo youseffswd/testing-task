@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server'; import { orders } from '@/lib/data';
+export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) { const { id } = await params; const order = orders.find(item => item.id === id); if (!order) return NextResponse.json({ message: 'Order not found' }, { status: 404 }); if (order.status !== 'pending') return NextResponse.json({ message: 'Only pending orders can be cancelled' }, { status: 409 }); order.status = 'cancelled'; return NextResponse.json({ order }); }

@@ -1,0 +1,2 @@
+import { OrderStatus } from '@/lib/types';
+export default function StatusBadge({ status }: { status: OrderStatus }) { const colors: Record<OrderStatus, string> = { pending: 'bg-amber-100 text-amber-800', paid: 'bg-sky-100 text-sky-800', shipped: 'bg-indigo-100 text-indigo-800', delivered: 'bg-emerald-100 text-emerald-800', cancelled: 'bg-slate-200 text-slate-700' }; return <span className={`rounded-full px-2.5 py-1 text-xs font-bold capitalize ${colors[status]}`}>{status}</span>; }
